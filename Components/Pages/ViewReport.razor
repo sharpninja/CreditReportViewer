@@ -1,0 +1,20 @@
+﻿@page "/ViewReport"
+@using CreditReportViewer.Models
+@rendermode InteractiveServer
+<PageTitle>Credit Report: @CreditReport?.NameFirst @CreditReport?.NameLast</PageTitle>
+<h1>@CreditReport?.CreditReportName Credit Report</h1>
+<RadzenFieldset >
+    <HeaderTemplate>
+        <h2>@CreditReport?.NameFirst @CreditReport?.NameLast</h2>
+    </HeaderTemplate>
+    <ChildContent>
+        <h3>Credit Score: @CreditReport?.CreditScore</h3>
+        <h3>Known Aliases</h3>
+        <ul>
+            @foreach (var alias in CreditReport?.Aliases ?? [])
+            {
+                <li>@alias</li>
+            }
+        </ul>
+    </ChildContent>
+</RadzenFieldset>

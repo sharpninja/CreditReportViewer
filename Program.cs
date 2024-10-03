@@ -1,4 +1,7 @@
 using CreditReportViewer.Components;
+using CreditReportViewer.MVC;
+
+using Radzen;
 
 namespace CreditReportViewer;
 public class Program
@@ -10,6 +13,10 @@ public class Program
         // Add services to the container.
         builder.Services.AddRazorComponents()
             .AddInteractiveServerComponents();
+
+        builder.Services.AddRadzenComponents();
+
+        builder.Services.AddScoped<CreditReportController>();
 
         var app = builder.Build();
 

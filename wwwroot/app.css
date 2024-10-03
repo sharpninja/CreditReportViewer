@@ -1,3 +1,7 @@
+body {
+    font-family: 'Sans Serif Collection', sans-serif
+}
+
 h1:focus {
     outline: none;
 }
@@ -26,4 +30,8 @@ h1:focus {
 
 .darker-border-checkbox.form-check-input {
     border-color: #929292;
+}
+
+.rz-column-title-content {
+    font-weight:800;
 }

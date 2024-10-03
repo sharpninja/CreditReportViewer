@@ -1,7 +1,23 @@
 ﻿@page "/"
+@using CreditReportViewer.Models
+@rendermode InteractiveServer
 
-<PageTitle>Home</PageTitle>
-
-<h1>Hello, world!</h1>
-
-Welcome to your new app.
+<PageTitle>Credit Report Viewer</PageTitle>
+<h1>Credit Reports</h1>
+<RadzenDataGrid AllowFiltering="false" AllowColumnResize="true" AllowAlternatingRows="false"
+                AllowSorting="false" AllowPaging="false"
+                Data="@CreditReports" ColumnWidth="300px"
+                SelectionMode="DataGridSelectionMode.Single"
+                @bind-Value=@SelectedCreditReports>
+    <Columns>
+        <RadzenDataGridColumn Property="@nameof(CreditReport.NameFirst)" Title="First Name" Width="160px" />
+        <RadzenDataGridColumn Property="@nameof(CreditReport.NameLast)" Title="Last Name" Width="160px" />
+        <RadzenDataGridColumn Property="@nameof(CreditReport.CreditReportName)" Title="Credit Report Name" Width="200px" />
+        <RadzenDataGridColumn Property="@nameof(CreditReport.CreditScore)" Title="Credit Score" Width="120px" />
+        <RadzenDataGridColumn Sortable="false" Filterable="false" Title="" Width="120px">
+            <Template Context="data">
+                <RadzenButton Click=@(() => ViewReport(data.UID))>View Details</RadzenButton>
+            </Template>
+        </RadzenDataGridColumn>
+    </Columns>
+</RadzenDataGrid>
